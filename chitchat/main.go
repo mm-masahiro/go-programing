@@ -15,6 +15,8 @@ func main() {
 	// HandleFuncは第一引数にURLをとり、第二引数にハンドラ関数名をとる
 	mux.HandleFunc("/", index)
 
+	mux.HandleFunc("/test", testHandler)
+
 	server := &http.Server{
 		Addr:    "0.0.0.0:8080",
 		Handler: mux,
@@ -24,4 +26,8 @@ func main() {
 
 func index(writer http.ResponseWriter, request *http.Request) {
 	fmt.Println("Hello world")
+}
+
+func testHandler(writer http.ResponseWriter, request *http.Request) {
+	fmt.Println("test test test")
 }
